@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>CRUD EMPRESAS</title>
+    </h:head>
+    <h:body>
+        <h:form>
+                    Digite Nit de la Empresa = <h:inputText value="#{empresaMB.objTemp.nit}"></h:inputText>
+                    <br></br>
+                    Digite Tipo de Empresa = <h:inputText value="#{empresaMB.objTemp.tipoEmpresa}"></h:inputText>
+                    <br></br>
+                    Digite Nombre de la Empresa = <h:inputText value="#{empresaMB.objTemp.nombre}"></h:inputText>
+                    <br></br>
+                    Digite Telefono de la Empresa:<h:inputText value="#{empresaMB.objTemp.telefono}"></h:inputText>
+                    <br></br>
+                    Digite Dirección de la Empresa:<h:inputText value="#{empresaMB.objTemp.direccion}"></h:inputText>
+                    <br></br>
+                    Digite Email de la Empresa:<h:inputText value="#{empresaMB.objTemp.email}"></h:inputText>
+                    <br></br>
+                    <h:commandButton value="Registrar" action="#{empresaMB.guardarEmpresa()}"></h:commandButton>
+                    <br></br>
+
+            <c:forEach items="#{empresaMB.empresas}" var="empresa">
+
+                Nit:#{empresa.nit}-Tipo de Empresa#{empresa.tipoEmpresa}-Nombre:#{empresa.nombre}
+                <br></br>
+                Telefono#{empresa.telefono}-Dirección#{empresa.direccion}-Email#{empresa.email}
+                <h:commandButton value="Editar" action="#{empresaMB.setEstado(true)}"></h:commandButton>
+                <c:if test="#{empresaMB.estado==true}">
+                    Digite Nit de la Empresa = <h:inputText value="#{empresaMB.objTemp.nit}"></h:inputText>
+                    <br></br>
+                    Digite Tipo de Empresa = <h:inputText value="#{empresaMB.objTemp.tipoEmpresa}"></h:inputText>
+                    <br></br>
+                    Digite Nombre de la Empresa = <h:inputText value="#{empresaMB.objTemp.nombre}"></h:inputText>
+                    <br></br>
+                    Digite Telefono de la Empresa:<h:inputText value="#{empresaMB.objTemp.telefono}"></h:inputText>
+                    <br></br>
+                    Digite Dirección de la Empresa:<h:inputText value="#{empresaMB.objTemp.direccion}"></h:inputText>
+                    <br></br>
+                    Digite Email de la Empresa:<h:inputText value="#{empresaMB.objTemp.email}"></h:inputText>
+                    <br></br>
+                    <h:commandButton value="Guardar" action="#{empresaMB.EditarEmpresa(empresa.nit)}"></h:commandButton>
+                    <br></br>
+
+                </c:if>
+                <h:commandButton value="Eliminar" action="#{empresaMB.eliminarEmpresa(empresa.nit)}"></h:commandButton>
+                <br></br>
+
+            </c:forEach>
+        </h:form>
+    </h:body>
+</html>
+
